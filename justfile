@@ -329,7 +329,7 @@ build-profiling:
     echo "You can analyze the application via: heaptrack ./target/profiling/rauthy"
 
 # Build the final container image.
-build image="ghcr.io/sebadob/rauthy": build-ui
+build image="ghcr.io/type-checker/rauthy": build-ui
     #!/usr/bin/env bash
     set -euxo pipefail
 
@@ -419,9 +419,9 @@ publish-latest:
     set -euxo pipefail
 
     # the `latest` image will always point to the postgres x86 version, which is used the most (probably)
-    {{ docker }} pull ghcr.io/sebadob/rauthy:$TAG
-    {{ docker }} tag ghcr.io/sebadob/rauthy:$TAG ghcr.io/sebadob/rauthy:latest
-    {{ docker }} push ghcr.io/sebadob/rauthy:latest
+    {{ docker }} pull ghcr.io/type-checker/rauthy:$TAG
+    {{ docker }} tag ghcr.io/type-checker/rauthy:$TAG ghcr.io/type-checker/rauthy:latest
+    {{ docker }} push ghcr.io/type-checker/rauthy:latest
 
 # should be run before submitting a PR to make sure everything is fine
 pre-pr-checks: build-ui fmt test-hiqlite test-postgres clippy
